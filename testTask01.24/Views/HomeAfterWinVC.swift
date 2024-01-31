@@ -1,5 +1,5 @@
 //
-//  Onboarding2VC.swift
+//  Onboarding1VC.swift
 //  testTask01.24
 //
 //  Created by Nikolai  on 18.01.2024.
@@ -8,15 +8,18 @@
 import UIKit
 import SnapKit
 
-class Onboarding2VC: UIViewController {
+//Выиграл в прошлый раз
+class Onboarding1VC: UIViewController {
     
     let backgroundImageView = UIImageView()
     let logoImageView = UIImageView()
     let topLabel = UILabel()
+    let moneyLabel = UILabel()
     let imageView = UIImageView()
     let bottomLabel = UILabel()
     let buttonView = UIImageView()
-    let spinButtonLabel = UILabel()
+    let startButtonLabel = UILabel()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +49,7 @@ class Onboarding2VC: UIViewController {
             make.width.equalTo(156)
         }
         
-        topLabel.text = "Today you will \n definitely get lucky"
+        topLabel.text = "Congratulations! \n Last time you won"
         topLabel.font = UIFont(name: "DingExtra-Heavy", size: 27)
         topLabel.textAlignment = .center
         topLabel.numberOfLines = 2
@@ -54,7 +57,7 @@ class Onboarding2VC: UIViewController {
         
         topLabel.addTextOutline2(usingColor: UIColor(red: 49/255, green: 21/255, blue: 102/255, alpha: 1),
                                  outlineWidth: 4,
-                                 width: 326,
+                                 width: 299,
                                  height: 70)
         
         topLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,22 +67,44 @@ class Onboarding2VC: UIViewController {
             make.bottom.equalToSuperview().inset(593)
 //            make.top.equalToSuperview().inset(149)
             make.height.equalTo(70)
-            make.width.equalTo(326)
+            make.width.equalTo(299)
         }
         
-        imageView.image = UIImage(named: "image3")
+        moneyLabel.text = "$\(defaults.integer(forKey: "bananWinNumber"))"
+        moneyLabel.font = UIFont(name: "DingExtra-Heavy", size: 40)
+        moneyLabel.textAlignment = .center
+        moneyLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+//        moneyLabel.addTextOutline(usingColor: UIColor(red: 49/255, green: 21/255, blue: 102/255, alpha: 1), outlineWidth: 8)
+        
+        moneyLabel.addTextOutline2(usingColor: UIColor(red: 49/255, green: 21/255, blue: 102/255, alpha: 1),
+                                 outlineWidth: 8,
+                                 width: 106 + 8,
+                                 height: 52)
+        
+        moneyLabel.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.addSubview(moneyLabel)
+        moneyLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(525)
+//            make.top.equalToSuperview().inset(235)
+            make.height.equalTo(52)
+            make.width.equalTo(106)
+        }
+        
+        imageView.image = UIImage(named: "image2")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
-//            make.top.equalToSuperview().inset(237)
-            make.bottom.equalToSuperview().inset(296)
+//            make.top.equalToSuperview().inset(278)
+            make.bottom.equalToSuperview().inset(284)
             make.centerX.equalToSuperview()
-            make.height.equalTo(279)
-            make.width.equalTo(358)
+            make.height.equalTo(250)
+            make.width.equalTo(378)
         }
         
-        bottomLabel.text = "Today the number of jackpots is \n 12,07% higher than yesterday"
+        bottomLabel.text = "Try your luck again \n and increase your profit"
         bottomLabel.font = UIFont(name: "DingExtra-Heavy", size: 17)
         bottomLabel.textAlignment = .center
         bottomLabel.numberOfLines = 2
@@ -94,13 +119,13 @@ class Onboarding2VC: UIViewController {
         backgroundImageView.addSubview(bottomLabel)
         bottomLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(230)
-//            make.top.equalToSuperview().inset(538)
+            make.bottom.equalToSuperview().inset(233)
+//            make.top.equalToSuperview().inset(535)
             make.height.equalTo(44)
             make.width.equalTo(313)
         }
         
-        buttonView.image = UIImage(named: "snipButton")
+        buttonView.image = UIImage(named: "buttonBlue")
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.addSubview(buttonView)
         
@@ -118,16 +143,16 @@ class Onboarding2VC: UIViewController {
         buttonView.addGestureRecognizer(tapGesture)
         buttonView.isUserInteractionEnabled = true
         
-        spinButtonLabel.text = "Spin"
-        spinButtonLabel.font = UIFont(name: "DingExtra-Heavy", size: 27)
-        spinButtonLabel.textAlignment = .center
-        spinButtonLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        startButtonLabel.text = "Start"
+        startButtonLabel.font = UIFont(name: "DingExtra-Heavy", size: 27)
+        startButtonLabel.textAlignment = .center
+        startButtonLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
-        spinButtonLabel.addTextOutline(usingColor: UIColor(red: 0/255, green: 40/255, blue: 85/255, alpha: 1), outlineWidth: 6)
+        startButtonLabel.addTextOutline(usingColor: UIColor(red: 0/255, green: 40/255, blue: 85/255, alpha: 1), outlineWidth: 6)
         
-        spinButtonLabel.translatesAutoresizingMaskIntoConstraints = false
-        buttonView.addSubview(spinButtonLabel)
-        spinButtonLabel.snp.makeConstraints { make in
+        startButtonLabel.translatesAutoresizingMaskIntoConstraints = false
+        buttonView.addSubview(startButtonLabel)
+        startButtonLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
     }

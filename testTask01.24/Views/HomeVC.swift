@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-
+//Онбординг
 class FirstLoginVC: UIViewController {
     
     let backgroundImageView = UIImageView()
@@ -18,6 +18,7 @@ class FirstLoginVC: UIViewController {
     let goodLuckLabel = UILabel()
     let buttonView = UIImageView()
     let startButtonLabel = UILabel()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,13 +133,17 @@ class FirstLoginVC: UIViewController {
     }
     
     @objc func buttonPressed() {
+        defaults.set(true, forKey: "appHasOnboarded")
         showNextVC()
     }
     
     private func showNextVC() {
-        let vc = Onboarding1VC()
+//        let vc = Onboarding1VC()
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: false)
+        let vc = GameVC()
         vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
+        present(vc, animated: true)
     }
     
 }

@@ -1,5 +1,5 @@
 //
-//  Onboarding1VC.swift
+//  Onboarding2VC.swift
 //  testTask01.24
 //
 //  Created by Nikolai  on 18.01.2024.
@@ -8,16 +8,16 @@
 import UIKit
 import SnapKit
 
-class Onboarding1VC: UIViewController {
+//Проиграл в прошлый раз
+class Onboarding2VC: UIViewController {
     
     let backgroundImageView = UIImageView()
     let logoImageView = UIImageView()
     let topLabel = UILabel()
-    let moneyLabel = UILabel()
     let imageView = UIImageView()
     let bottomLabel = UILabel()
     let buttonView = UIImageView()
-    let startButtonLabel = UILabel()
+    let spinButtonLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class Onboarding1VC: UIViewController {
             make.width.equalTo(156)
         }
         
-        topLabel.text = "Congratulations! \n Last time you won"
+        topLabel.text = "Today you will \n definitely get lucky"
         topLabel.font = UIFont(name: "DingExtra-Heavy", size: 27)
         topLabel.textAlignment = .center
         topLabel.numberOfLines = 2
@@ -55,7 +55,7 @@ class Onboarding1VC: UIViewController {
         
         topLabel.addTextOutline2(usingColor: UIColor(red: 49/255, green: 21/255, blue: 102/255, alpha: 1),
                                  outlineWidth: 4,
-                                 width: 299,
+                                 width: 326,
                                  height: 70)
         
         topLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -65,44 +65,22 @@ class Onboarding1VC: UIViewController {
             make.bottom.equalToSuperview().inset(593)
 //            make.top.equalToSuperview().inset(149)
             make.height.equalTo(70)
-            make.width.equalTo(299)
+            make.width.equalTo(326)
         }
         
-        moneyLabel.text = "$500"
-        moneyLabel.font = UIFont(name: "DingExtra-Heavy", size: 40)
-        moneyLabel.textAlignment = .center
-        moneyLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-        
-//        moneyLabel.addTextOutline(usingColor: UIColor(red: 49/255, green: 21/255, blue: 102/255, alpha: 1), outlineWidth: 8)
-        
-        moneyLabel.addTextOutline2(usingColor: UIColor(red: 49/255, green: 21/255, blue: 102/255, alpha: 1),
-                                 outlineWidth: 8,
-                                 width: 106 + 8,
-                                 height: 52)
-        
-        moneyLabel.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImageView.addSubview(moneyLabel)
-        moneyLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(525)
-//            make.top.equalToSuperview().inset(235)
-            make.height.equalTo(52)
-            make.width.equalTo(106)
-        }
-        
-        imageView.image = UIImage(named: "image2")
+        imageView.image = UIImage(named: "image3")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
-//            make.top.equalToSuperview().inset(278)
-            make.bottom.equalToSuperview().inset(284)
+//            make.top.equalToSuperview().inset(237)
+            make.bottom.equalToSuperview().inset(296)
             make.centerX.equalToSuperview()
-            make.height.equalTo(250)
-            make.width.equalTo(378)
+            make.height.equalTo(279)
+            make.width.equalTo(358)
         }
         
-        bottomLabel.text = "Try your luck again \n and increase your profit"
+        bottomLabel.text = "Today the number of jackpots is \n \(Int.random(in: 5...30))% higher than yesterday"
         bottomLabel.font = UIFont(name: "DingExtra-Heavy", size: 17)
         bottomLabel.textAlignment = .center
         bottomLabel.numberOfLines = 2
@@ -117,13 +95,13 @@ class Onboarding1VC: UIViewController {
         backgroundImageView.addSubview(bottomLabel)
         bottomLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(233)
-//            make.top.equalToSuperview().inset(535)
+            make.bottom.equalToSuperview().inset(230)
+//            make.top.equalToSuperview().inset(538)
             make.height.equalTo(44)
             make.width.equalTo(313)
         }
         
-        buttonView.image = UIImage(named: "buttonBlue")
+        buttonView.image = UIImage(named: "snipButton")
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.addSubview(buttonView)
         
@@ -141,16 +119,16 @@ class Onboarding1VC: UIViewController {
         buttonView.addGestureRecognizer(tapGesture)
         buttonView.isUserInteractionEnabled = true
         
-        startButtonLabel.text = "Start"
-        startButtonLabel.font = UIFont(name: "DingExtra-Heavy", size: 27)
-        startButtonLabel.textAlignment = .center
-        startButtonLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        spinButtonLabel.text = "Spin"
+        spinButtonLabel.font = UIFont(name: "DingExtra-Heavy", size: 27)
+        spinButtonLabel.textAlignment = .center
+        spinButtonLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
-        startButtonLabel.addTextOutline(usingColor: UIColor(red: 0/255, green: 40/255, blue: 85/255, alpha: 1), outlineWidth: 6)
+        spinButtonLabel.addTextOutline(usingColor: UIColor(red: 0/255, green: 40/255, blue: 85/255, alpha: 1), outlineWidth: 6)
         
-        startButtonLabel.translatesAutoresizingMaskIntoConstraints = false
-        buttonView.addSubview(startButtonLabel)
-        startButtonLabel.snp.makeConstraints { make in
+        spinButtonLabel.translatesAutoresizingMaskIntoConstraints = false
+        buttonView.addSubview(spinButtonLabel)
+        spinButtonLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
     }
@@ -160,8 +138,8 @@ class Onboarding1VC: UIViewController {
     }
     
     private func showNextVC() {
-        let vc = Onboarding2VC()
+        let vc = GameVC()
         vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
+        present(vc, animated: true)
     }
 }
